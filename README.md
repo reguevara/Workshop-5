@@ -144,12 +144,10 @@ Importantly, ask yourself the following:
 #### 4. Uniform variables
 
 Instead of hard coding an output colour into the pixel shader, 
-let's create a parameter so that we can modify it within a C# component on
+let's create a property so that we can modify it within a C# component on
 the CPU side
 (i.e., via the cube's material). Declare a `uniform` variable within the Cg/HLSL
-code that will represent the colour parameter like so:
-
-
+code that will represent the colour property like so:
 
 ```HLSL
 uniform float4 _Color;
@@ -168,12 +166,12 @@ alpha (w) channels of the colour respectively.
 > in fact, the `uniform` [storage-class modifier](https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-variable-syntax)
 > is optional in this context.
 
-Now that you've defined a parameter, write a C# component to change the
+Now that you've defined the property, write a C# component to change the
 colour of the cube on every frame (for an extra challenge, try to cycle through
 the [hue](https://docs.unity3d.com/ScriptReference/Color.HSVToRGB.html) like we have done below). 
 One way to do so is via the cube 
 material's [`SetColor()`](https://docs.unity3d.com/ScriptReference/Material.SetColor.html)
-method. The name _string_ of the parameter must correspond to the name of
+method. The name _string_ of the property must correspond to the name of
 the variable declared in the shader, namely `"_Color"`.
 
 <p align="center">
