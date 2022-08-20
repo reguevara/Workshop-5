@@ -40,10 +40,12 @@ The workshop comes with the following assets:
 #### 1. Assign a shader within a script
 
 Open `MainScene.unity` in Unity. As usual, press 'Play' and take a look at
-the generated cube. It should be pretty striking as it'll be rendered pink! In this case,
-it's because the cube's material does not have an assigned shader. There are other
-causes for a bright pink material, but in almost all cases, it's related to a shader
-issue. For example, another common cause is a shader not compiling. 
+the generated cube. It should be pretty striking as it'll be rendered pink! 
+There are many
+causes for a bright pink render, 
+but in almost all cases, it's related to a shader
+issue. For example, a shader not compiling. In this particular case,
+it's because the cube's material does not have an assigned shader.
 
 Your first task is to
 modify `GenerateCube.cs` to assign `SolidColorShader.shader` to the cube’s
@@ -86,19 +88,25 @@ changing a visual property unique to that particular object _instance_.
 > (i.e., this is a great way to accidentally lose work!).
 
 So what exactly _is_ a material in Unity, 
-and how does it relate to shaders? One way to think about a material 
-is that it's a "wrapper" for a shader. 
-It encapsulates _properties_ that are made 
-available
-within the respective shader program. In other words, to render an object,
-you describe the "what" via a material, and the "how" via the shader
-(which itself is a property of the material!).
-
-> **Note** <br>
-> We can't draw an object's surface if we don't know _how_ to do it, so material 
-> can't _not_ have a shader reference. This is why
-> why you see the pink "fallback" shader when the material's shader isn't
-> defined correctly, or fails in some way!
+and how does it relate to shaders? 
+One way to think about a material 
+is simply as a "proxy" for a shader, where parameters related to the shader's
+functioning are fine-tuned for a particular effect. 
+These parameters are called _properties_, and are made 
+available within the respective shader program implicitly via the `Material`
+instance.
+Importantly, different materials might share
+the same shader, but pass _unique_ parameters to customise the shader's 
+output on a per-object basis.
+In other words, to render an object,
+you describe the "what" via a material, and the "how" is driven 
+via the shader within.
+Note that in some cases a shader is so
+simple, or _would-be_ properties are essentially "hard coded" within the shader, 
+that the material's 
+only utilised "field" is the shader itself. This is what we see 
+in this particular
+example, but task 4 will change that. 
 
 Note that the `Material` class acts as a 
 gateway between your CPU-based 
