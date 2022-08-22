@@ -49,3 +49,5 @@ Shader "Unlit/TextureShader"
 		}
 	}
 }
+
+//Also calculate in shader the challenge 

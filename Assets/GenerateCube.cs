@@ -10,6 +10,8 @@ public class GenerateCube : MonoBehaviour
 {
     [SerializeField]
     private Shader changeShaderTo;
+    [SerializeField]
+    private Texture changeTextureTo;
      //public Shader changeShaderTo;
 
 
@@ -28,6 +30,7 @@ public class GenerateCube : MonoBehaviour
         // e.g. material.color = ...;
         // Turns out we can also set the material's shader in a similar way:
         material.shader = this.changeShaderTo;
+        material.mainTexture = this.changeTextureTo;
         
     }
 
@@ -113,7 +116,7 @@ public class GenerateCube : MonoBehaviour
         mesh.SetColors(new[]
         {
             // Top face
-            Color.red,
+            Color.yellow,
             Color.red,
             Color.red,
 
