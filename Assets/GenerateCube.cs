@@ -8,6 +8,22 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class GenerateCube : MonoBehaviour
 {
+    [SerializeField]
+    private Shader changeShaderTo;
+
+/*
+private void Update(){
+    var material = GetComponent<Renderer>().material;
+   
+   //set color to new value every frame
+   //material
+
+
+
+}*/
+
+
+    //public Shader changeShaderTo;
     private void Start()
     {
         // Generate the mesh and assign to the mesh filter.
@@ -19,7 +35,8 @@ public class GenerateCube : MonoBehaviour
         // Recall how we set the material's "color" in the first workshop:
         // e.g. material.color = ...;
         // Turns out we can also set the material's shader in a similar way:
-        material.shader = null;
+        material.shader = this.changeShaderTo;
+        //material.color;
     }
 
     private Mesh CreateMesh()
