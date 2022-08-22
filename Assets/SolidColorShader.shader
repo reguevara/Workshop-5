@@ -12,7 +12,7 @@ Shader "Unlit/SolidColorShader"
 
 			#include "UnityCG.cginc"
 
-			//uniform float4 _Color;
+			uniform float4 _Color;
 
 			struct vertIn
 			{

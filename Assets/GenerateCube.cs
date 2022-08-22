@@ -10,20 +10,12 @@ public class GenerateCube : MonoBehaviour
 {
     [SerializeField]
     private Shader changeShaderTo;
+     //public Shader changeShaderTo;
 
-/*
-private void Update(){
-    var material = GetComponent<Renderer>().material;
+
+
+
    
-   //set color to new value every frame
-   //material
-
-
-
-}*/
-
-
-    //public Shader changeShaderTo;
     private void Start()
     {
         // Generate the mesh and assign to the mesh filter.
@@ -36,7 +28,17 @@ private void Update(){
         // e.g. material.color = ...;
         // Turns out we can also set the material's shader in a similar way:
         material.shader = this.changeShaderTo;
-        //material.color;
+        
+    }
+
+    private void Update()
+    {
+        var material = GetComponent<MeshRenderer>().material;
+    
+        //set color to new value every frame
+        //material
+        var color = Color.HSVToRGB(Time.time % 1f, 0.7f, 1.0f);
+        material.color = color;
     }
 
     private Mesh CreateMesh()
